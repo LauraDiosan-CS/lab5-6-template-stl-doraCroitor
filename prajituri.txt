@@ -1,2 +1,3 @@
-Id: 2, nume: Kinder, ingredinte: ciocolataAlune, pret: 7.9
-Id: 3, nume: Tiramisu, ingredinte: cafeaPiscoturi, pret: 5.9
+Id: 1, nume: ddds, ingredinte: ssd_fsd, pret: 5.8
+Id: 2, nume: ddddd, ingredinte: sksd_ffd, pret: 2.4
+Id: 3, nume: dddddsda, ingredinte: fjsdlkjf_f, pret: 6.2

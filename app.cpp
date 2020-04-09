@@ -13,8 +13,9 @@ int main() {
 	TestRepo t;
 	t.mainTest();
 	RepoSTL<Prajitura> repoPrajitura("prajituri.txt");
-	Service s(repoPrajitura);
-	UI u(s);
+	//Repo<Prajitura> repoPrajitura;
+	Service s (repoPrajitura);
+	UI u (s);
 	u.meniu();
 	cout << "Programul s-a sfarsit ! ";
 	return 0;

@@ -34,7 +34,7 @@ void UI::handleAdd() {
 	cin >> id;
 	cout << "  Nume: ";
 	cin >> nume;
-	cout << " Ingrediente (subAceastaForma): ";
+	cout << " Ingrediente (subAceastaForma/sau_asa): ";
 	cin >> ingrediente;
 	cout << " Pret: ";
 	cin >> pret;

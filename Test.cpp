@@ -118,7 +118,7 @@ void TestRepo::mainTest() {
 
 }
 
-/*
+
 void testPrajitura() {
 	char* nume1 = new char[strlen("Tiramisu") + 1];
 	strcpy_s(nume1, strlen("Tiramisu") + 1, "Tiramisu");
@@ -208,4 +208,4 @@ void testService() {
 	delete[] ingredinte2;
 	delete[] ingredinte3;
 
-}*/
+}
