@@ -8,9 +8,13 @@ private:
 	vector<T> elemente;
 	
 public:
+
+	Repo() {};
+
 	// Adauga o prajitura
 	void addElem(T e) {
 		this->elemente.push_back(e);
+
 	}
 
 	// Toate elementele
@@ -23,41 +27,33 @@ public:
 		return this->elemente.size();
 	};
 
-	Repo() {};
+	
 	~Repo() {
 		this->elemente.clear();
 	}
 
 	// sterge
-	void stergere(T c) {
+	void stergere(T p) {
 		typename vector<T>::iterator it;
-		it= find(this->elemente.begin(), this->elemente.end(), c);
-		if (!(it == this->end())) {
+		it= find(this->elemente.begin(), this->elemente.end(), p);
+		if (!(it == this->elemente.end())) {
 
 			this->elemente.erase(it);
 		}
 	}
 
-	// modifica c1 cu c2
-	void update(T& c1, T& c2) {
+	// modifica p1 cu 22
+	void update(T& p1, T& p2) {
 		typename vector<T>::iterator it;
+		it = find(this->elemente.begin(), this->elemente.end(), p1);
+		if (!(it == this->elemente.end())) {
 
-		it = find(this->elemente.begin(), this->elemente.end(), c1);
-		if (!(it == this->end())) {
-
-			*it = c2;
+			*it = p2;
 		}
 	};
 
 	void clear() {
 		this->elemente.clear();
-	}
-
-
-	void setNumar(int pos, int newNumar) {
-
-		this->elemente[pos].setNumar(newNumar);
-
 	}
 
 
@@ -68,24 +64,3 @@ public:
 	}
 
 };
-/*
-
-void Repo<T>::saveToFile() {
-	ofstream fout("prajituri.txt");
-	for (unsigned i = 0; i < elemente.size(); i++)
-		fout << elemente[i].getId() << " " << elemente[i].getNume() << " " << elemente[i].getIngrediente() << " " << elemente[i].getPret() << endl;
-	fout.close();
-}
-
-template<class T>
-
-void Repo<T>::loadToFile() {
-	ifstream fin("prajituri.txt");
-	int id;
-	char nume[20];
-	char ingrediente[30];
-	double pret;
-	while (fin >> id >> nume >> ingrediente >> pret) {
-		elemente.push_back(Prajitura(id, nume, ingrediente, pret));
-	}
-}*/

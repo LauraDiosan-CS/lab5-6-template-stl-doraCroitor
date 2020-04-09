@@ -1,0 +1,2 @@
+Id: 2, nume: Kinder, ingredinte: ciocolataAlune, pret: 7.9
+Id: 3, nume: Tiramisu, ingredinte: cafeaPiscoturi, pret: 5.9

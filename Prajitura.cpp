@@ -26,15 +26,9 @@ Prajitura::Prajitura(const Prajitura& p) {
 }
 
 Prajitura::~Prajitura() {
-	if (this->nume != NULL) {
-		delete[] this->nume;
-		this->nume = NULL;
-	}
-	if (this->ingrediente != NULL) {
-		delete[] this->ingrediente;
-		this->ingrediente = NULL;
-	}
 	this->id = 0;
+	this->ingrediente = NULL;
+	this->nume = NULL;
 	this->pret = 0.0;
 }
 
@@ -61,25 +55,19 @@ void Prajitura::setId(int id) {
 }
 
 void Prajitura::setNume(char* nume) {
-	if (this->nume != NULL)
+	if (this->nume) {
 		delete[] this->nume;
-	if (nume != NULL) {
-		this->nume = new char[strlen(nume) + 1];
-		strcpy_s(this->nume, strlen(nume) + 1, nume);
 	}
-	else
-		this->nume = NULL;
+	this->nume = new char[strlen(nume) + 1];
+	strcpy_s(this->nume, strlen(nume) + 1, nume);
 }
 
 void Prajitura::setIngrediente(char* ingrediente) {
-	if (this->ingrediente != NULL)
+	if (this->ingrediente) {
 		delete[] this->ingrediente;
-	if (ingrediente != NULL) {
-		this->ingrediente = new char[strlen(ingrediente) + 1];
-		strcpy_s(this->ingrediente, strlen(ingrediente) + 1, ingrediente);
 	}
-	else
-		this->ingrediente = NULL;
+	this->ingrediente = new char[strlen(ingrediente) + 1];
+	strcpy_s(this->ingrediente, strlen(ingrediente) + 1, ingrediente);
 }
 
 void Prajitura::setPret(double pret) {
@@ -87,7 +75,7 @@ void Prajitura::setPret(double pret) {
 }
 
 bool Prajitura::operator==(const Prajitura& p) {
-	return (this->id == id) && (strcmp(this->nume, p.nume) == 0) && (strcmp(this->ingrediente, p.ingrediente)==0) && (this->pret == pret);
+	return (this->id == p.id) && (strcmp(this->nume, p.nume)==0) && (strcmp(this->ingrediente, p.ingrediente)==0) && (abs(this->pret-p.pret)<0.0001);
 }
 
 Prajitura& Prajitura::operator=(const Prajitura& p) {
@@ -105,9 +93,12 @@ ostream& operator<<(ostream& os, const Prajitura& p) {
 
 istream& operator>>(istream& is, Prajitura& p) {
 	if (p.nume == NULL)
-		p.nume = new char[20];
+		p.nume = new char[30];
+
 	if (p.ingrediente == NULL)
-		p.ingrediente = new char[30];
+		p.ingrediente = new char[40];
+
 	is >> p.id >> p.nume >> p.ingrediente >> p.pret;
+
 	return is;
 }

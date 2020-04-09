@@ -2,7 +2,123 @@
 #include <cassert>
 #include "Prajitura.h"
 #include "Repo.h"
+#include "Service.h"
 
+void TestRepo::testRepo() {
+	this->repoPrajituri.setFileName("testPrajituri.txt");
+	this->repoPrajituri.loadFromFile();
+	int n = this->repoPrajituri.getAll().size();
+	for (int i = 0; i <n; i++)
+		assert(this->repoPrajituri.getAll()[i] == this->prajituriTest[i]);
+
+}
+
+
+void TestRepo::testAdd() {
+	this->repoPrajituri.setFileName("testPrajituri.txt");
+	this->repoPrajituri.loadFromFile();
+	int n = this->repoPrajituri.getAll().size();
+
+	char* nume1 = new char[strlen("Tiramisu") + 1];
+	strcpy_s(nume1, strlen("Tiramisu") + 1, "Tiramisu");
+	char* ingredinte1 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte1, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+	Prajitura praji1(1, nume1, ingredinte1, 5.5);
+
+	this->repoPrajituri.addElem(praji1);
+	assert(this->repoPrajituri.getAll().size() == n + 1);
+	assert(this->repoPrajituri.getAll()[n] == praji1);
+
+	delete[] nume1;
+	delete[] ingredinte1;
+}
+
+
+void TestRepo::testDelete() {
+	this->repoPrajituri.setFileName("testPrajituri.txt");
+	this->repoPrajituri.loadFromFile();
+	int n = this->repoPrajituri.getAll().size();
+
+	char* nume1 = new char[strlen("Tiramisu") + 1];
+	strcpy_s(nume1, strlen("Tiramisu") + 1, "Tiramisu");
+	char* ingredinte1 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte1, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+	Prajitura praji1(1, nume1, ingredinte1, 5.5);
+
+	this->repoPrajituri.stergere(praji1);
+	assert(this->repoPrajituri.getAll().size() == n-1);
+
+	delete[] nume1;
+	delete[] ingredinte1;
+}
+
+
+void TestRepo::testUpdate() {
+	this->repoPrajituri.setFileName("testPrajituri.txt");
+	this->repoPrajituri.loadFromFile();
+	int n = this->repoPrajituri.getAll().size();
+
+	char* nume1 = new char[strlen("Tiramisu") + 1];
+	strcpy_s(nume1, strlen("Tiramisu") + 1, "Tiramisu");
+	char* ingredinte1 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte1, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+	Prajitura praji1(1, nume1, ingredinte1, 5.5);
+
+	this->repoPrajituri.addElem(praji1);
+
+	char* nume2 = new char[strlen("Amandina") + 1];
+	strcpy_s(nume2, strlen("Amandina") + 1, "Amandina");
+	char* ingredinte2 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte2, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+	Prajitura praji2(2, nume2, ingredinte2, 6.5);
+
+	this->repoPrajituri.update(praji1, praji2);
+	assert(this->repoPrajituri.getAll()[0].getId() == 2);
+
+	
+}
+
+TestRepo::TestRepo() {
+
+	char* nume1 = new char[strlen("Tiramisu") + 1];
+	strcpy_s(nume1, strlen("Tiramisu") + 1, "Tiramisu");
+	char* ingredinte1 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte1, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+	Prajitura praji1(1, nume1, ingredinte1, 5.5);
+
+	char* nume2 = new char[strlen("Amandina") + 1];
+	strcpy_s(nume2, strlen("Amandina") + 1, "Amandina");
+	char* ingredinte2 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte2, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+	Prajitura praji2(2, nume2, ingredinte2, 4.5);
+
+	char* nume3 = new char[strlen("Cremes") + 1];
+	strcpy_s(nume3, strlen("Cremes") + 1, "Cremes");
+	char* ingredinte3 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte3, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+	Prajitura praji3(3, nume3, ingredinte3, 5.5);
+
+	this->prajituriTest.push_back(praji1);
+	this->prajituriTest.push_back(praji2);
+	this->prajituriTest.push_back(praji3);
+
+	delete[] nume1;
+	delete[] nume2;
+	delete[] nume3;
+	delete[] ingredinte1;
+	delete[] ingredinte2;
+	delete[] ingredinte3;
+
+}
+
+void TestRepo::mainTest() {
+	this->testRepo();
+	this->testAdd();
+	this->testDelete();
+
+}
+
+/*
 void testPrajitura() {
 	char* nume1 = new char[strlen("Tiramisu") + 1];
 	strcpy_s(nume1, strlen("Tiramisu") + 1, "Tiramisu");
@@ -55,3 +171,41 @@ void testRepoPrajitura() {
 	delete[] ingredinte2;
 	delete[] ingredinte3;
 }
+
+
+void testService() {
+	char* nume1 = new char[strlen("Tiramisu") + 1];
+	strcpy_s(nume1, strlen("Tiramisu") + 1, "Tiramisu");
+	char* ingredinte1 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte1, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+
+	char* nume2 = new char[strlen("Amandina") + 1];
+	strcpy_s(nume2, strlen("Amandina") + 1, "Amandina");
+	char* ingredinte2 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte2, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+
+	char* nume3 = new char[strlen("Cremes") + 1];
+	strcpy_s(nume3, strlen("Cremes") + 1, "Cremes");
+	char* ingredinte3 = new char[strlen("cafeaPiscoturi") + 1];
+	strcpy_s(ingredinte3, strlen("cafeaPiscoturi") + 1, "cafeaPiscoturi");
+
+	Service servicePrajituri;
+	servicePrajituri.addPrajitura(1, nume1, ingredinte1, 5.5);
+	servicePrajituri.addPrajitura(2, nume2, ingredinte2, 4.5);
+	servicePrajituri.addPrajitura(3, nume3, ingredinte3, 5.5);
+	assert(servicePrajituri.getSize() == 3);
+
+	servicePrajituri.deletePrajituraByID(1);
+	assert(servicePrajituri.getSize() == 2);
+
+	servicePrajituri.updatePrajituraByID(2, 1, nume1, ingredinte1, 3.5);
+	assert(servicePrajituri.getAll()[0].getId() == 1);
+
+	delete[] nume1;
+	delete[] nume2;
+	delete[] nume3;
+	delete[] ingredinte1;
+	delete[] ingredinte2;
+	delete[] ingredinte3;
+
+}*/
