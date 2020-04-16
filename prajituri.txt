@@ -1,3 +1,4 @@
-Id: 1, nume: ddds, ingredinte: ssd_fsd, pret: 5.8
-Id: 2, nume: ddddd, ingredinte: sksd_ffd, pret: 2.4
-Id: 3, nume: dddddsda, ingredinte: fjsdlkjf_f, pret: 6.2
+1 Tiramisu cafea_oua_zahar 5.5
+2 Briosa faina_zahar_oua 4.5
+3 Negresa ciocolata_oua_zahar 3.2
+4 Cremes vanilie 4

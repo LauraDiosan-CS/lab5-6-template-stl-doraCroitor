@@ -33,7 +33,8 @@ public:
 	}
 
 	// sterge
-	void stergere(T p) {
+	void stergere(T p)
+	{
 		typename vector<T>::iterator it;
 		it= find(this->elemente.begin(), this->elemente.end(), p);
 		if (!(it == this->elemente.end())) {
@@ -55,7 +56,6 @@ public:
 	void clear() {
 		this->elemente.clear();
 	}
-
 
 	T getElem(int i) {
 

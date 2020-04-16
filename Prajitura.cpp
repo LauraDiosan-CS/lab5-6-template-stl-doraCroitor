@@ -7,7 +7,7 @@ Prajitura::Prajitura() {
 	this->pret = 0.0;
 }
 
-Prajitura::Prajitura(int id, char* nume, char* ingrediente, double pret) {
+Prajitura::Prajitura(int id,  char* nume,  char* ingrediente, double pret) {
 	this->id = id;
 	this->nume = new char[strlen(nume) + 1];
 	strcpy_s(this->nume, strlen(nume) + 1, nume);
@@ -54,7 +54,7 @@ void Prajitura::setId(int id) {
 	this->id = id;
 }
 
-void Prajitura::setNume(char* nume) {
+void Prajitura::setNume( char* nume) {
 	if (this->nume) {
 		delete[] this->nume;
 	}
@@ -62,7 +62,7 @@ void Prajitura::setNume(char* nume) {
 	strcpy_s(this->nume, strlen(nume) + 1, nume);
 }
 
-void Prajitura::setIngrediente(char* ingrediente) {
+void Prajitura::setIngrediente( char* ingrediente) {
 	if (this->ingrediente) {
 		delete[] this->ingrediente;
 	}
@@ -73,6 +73,20 @@ void Prajitura::setIngrediente(char* ingrediente) {
 void Prajitura::setPret(double pret) {
 	this->pret = pret;
 }
+
+/*void Prajitura::toString(string info) {
+	int info1 = info.length() - 1;
+	int info2 = info.length() - 1;
+	while (info[info1] != '|')
+		info1--;
+	this->setPret(stod(info.substr(info1 + 1, info2 - info1 + 1)));
+	info1--;
+	info2 = info1;
+	while (info[info1] != '|')
+		info1--;
+	this->setIngrediente(info.substr(info1 + 1, info2 - info1).c_str());
+
+}*/
 
 bool Prajitura::operator==(const Prajitura& p) {
 	return (this->id == p.id) && (strcmp(this->nume, p.nume)==0) && (strcmp(this->ingrediente, p.ingrediente)==0) && (abs(this->pret-p.pret)<0.0001);
@@ -86,8 +100,12 @@ Prajitura& Prajitura::operator=(const Prajitura& p) {
 	return *this;
 }
 
+bool Prajitura::operator!=(const Prajitura& p) {
+	return !(Prajitura::operator==(p));
+}
+
 ostream& operator<<(ostream& os, const Prajitura& p) {
-	os << "Id: " << p.id << ", nume: " << p.nume << ", ingredinte: " << p.ingrediente << ", pret: " << p.pret << endl;
+	os << p.id <<" "<< p.nume <<" "<< p.ingrediente <<" " <<p.pret << endl;
 	return os;
 }
 

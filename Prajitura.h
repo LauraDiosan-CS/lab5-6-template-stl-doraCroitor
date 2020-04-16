@@ -1,5 +1,9 @@
 #pragma once
 #include <iostream>
+#include <string>
+#include <cstddef>
+#include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -11,7 +15,7 @@ private:
 	double pret;
 public:
 	Prajitura();
-	Prajitura(int id, char* nume, char* ingrediente, double pret);
+	Prajitura(int id,  char* nume,  char* ingrediente, double pret);
 	Prajitura(const Prajitura& p);
 	~Prajitura();
 
@@ -21,12 +25,13 @@ public:
 	char* getIngrediente();
 	double getPret();
 	void setId(int id);
-	void setNume(char* nume);
-	void setIngrediente(char* ingrediente);
+	void setNume( char* nume);
+	void setIngrediente( char* ingrediente);
 	void setPret(double pret);
 
 	bool operator==(const Prajitura& p);
 	Prajitura& operator=(const Prajitura& p);
+	bool operator!=(const Prajitura& p);
 	friend ostream& operator<<(ostream& os, const Prajitura& p);
 	friend istream& operator>>(istream& os, Prajitura& p);
 };

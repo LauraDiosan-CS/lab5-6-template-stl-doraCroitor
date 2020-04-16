@@ -11,6 +11,7 @@ public:
 	void handleShow();
 	void handleDelete();
 	void handleUpdate();
+	void handleMedie();
 	UI();
 	~UI();
 	UI(const Service& s);

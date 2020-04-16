@@ -97,4 +97,55 @@ vector<Prajitura> Service::getAll() {
 	return repoPrajituri.getAll();
 }
 
+/*
+	Desc: Adauga ingredientele din fiecare prejitura
+	In: 
+	Out: 
+*/
+void Service::newIngrediente() {
+	if (this->repoPrajituri.getAll().size() == 0)
+		return;
+	vector<Prajitura> prajituri = this->repoPrajituri.getAll();
+	for(int j=0;j<prajituri.size();j++)
+	{	int count = 0;
+		string ingrediente = string(prajituri[j].getIngrediente());
+		for (int i = 0; i < ingrediente.length(); i++) {
+			if (ingrediente[i] == '_') {
+				i++;
+				this->ingrediente.insert(ingrediente.substr(count, i - count - 1));
+				count = i;
+			}
+
+		}
+		this->ingrediente.insert(ingrediente.substr(count, ingrediente.length() - count));
+		//this->ingrediente.insert(ingrediente.substr(count, ingrediente.length() - count));
+	}
+}
+
+
+/*
+	Desc: Calculeaza medie ingredientelor
+	In:
+	Out: medie pentru fiecare ingredient
+*/
+map<string, double> Service::medieIngrediente() {
+	map<string, double> rez;
+	map<string, int> cnt;
+	this->newIngrediente();
+	for (auto iter = begin(this->ingrediente); iter != end(this->ingrediente); ++iter) 
+	{
+		rez[*iter] = 0;
+		cnt[*iter] = 0;
+		for (Prajitura praji : this->repoPrajituri.getAll()) {
+			if (string(praji.getIngrediente()).find(*iter) != string::npos) {
+				rez[*iter] += praji.getPret();
+				cnt[*iter]++;
+			}
+		}
+		rez[*iter] /= cnt[*iter];
+	}
+	return rez;
+}
+
+
 

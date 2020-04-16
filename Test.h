@@ -3,6 +3,7 @@
 #include "RepoSTL.h"
 #include "Prajitura.h"
 
+
 class TestRepo {
 private:
 	RepoSTL<Prajitura> repoPrajituri;
@@ -14,4 +15,12 @@ private:
 public:
 	TestRepo();
 	void mainTest();
+};
+
+class TestService
+{
+public:
+	void testAllService();
+
+
 };

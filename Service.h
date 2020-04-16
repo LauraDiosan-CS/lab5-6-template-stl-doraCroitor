@@ -2,10 +2,14 @@
 #include "Prajitura.h"
 #include "Repo.h"
 #include "RepoSTL.h"
+#include <map>
+#include <vector>
+#include <set>
 
 class Service {
 private:
 	RepoSTL<Prajitura> repoPrajituri;
+	set<string> ingrediente;
 public:
 	Service();
 	Service(const Service& s);
@@ -19,4 +23,6 @@ public:
 	void deletePrajituraByID(int id);
 	void updatePrajituraByID(int id, int newId,  char* nume,  char* ingrediente, double pret);
 	vector<Prajitura> getAll();
+	void newIngrediente();
+	std::map<std::string, double> medieIngrediente();
 };

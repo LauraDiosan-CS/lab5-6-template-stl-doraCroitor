@@ -1,1 +1,1 @@
-Id: 1, nume: Tiramisu, ingredinte: cafeaPiscoturi, pret: 5.5
+1 Tiramisu cafea_piscoturi 5.5

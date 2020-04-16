@@ -17,7 +17,8 @@ public:
 		delete[] this->fileName;
 	};
 
-	RepoSTL(const char* fileName) {
+	RepoSTL(const char* fileName)
+	{
 		this->fileName = new char[strlen(fileName) + 1];
 		strcpy_s(this->fileName, strlen(fileName) + 1, fileName);
 		this->loadFromFile();
@@ -38,7 +39,8 @@ public:
 
 	};
 
-	RepoSTL(const RepoSTL& r) {
+	RepoSTL(const RepoSTL& r)
+	{
 
 		this->fileName = new char[strlen(fileName) + 1];
 		strcpy_s(this->fileName, strlen(fileName) + 1, fileName);

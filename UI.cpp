@@ -18,7 +18,8 @@ void UI:: display() {
 	cout << "2. Afisare prajituri \n";
 	cout << "3. Sterge prajitura \n";
 	cout << "4. Modifica prajitura \n";
-	cout << "5. Iesire \n";
+	cout << "5. Media ingrediente/pret \n";
+	cout << "6. Iesire \n";
 	cout << endl;
 }
 
@@ -34,7 +35,7 @@ void UI::handleAdd() {
 	cin >> id;
 	cout << "  Nume: ";
 	cin >> nume;
-	cout << " Ingrediente (subAceastaForma/sau_asa): ";
+	cout << " Ingrediente (sub_aceasta_forma): ";
 	cin >> ingrediente;
 	cout << " Pret: ";
 	cin >> pret;
@@ -84,6 +85,13 @@ void UI::handleUpdate() {
 	delete[] newIngrediente;
 }
 
+void UI::handleMedie() {
+	map<string, double> rez = this->servicePraji.medieIngrediente();
+	for (map<string, double>::iterator it = rez.begin(); it != rez.end(); ++it) {
+		cout << it->first << ":" << rez[it->first] << endl;
+	}
+}
+
 void UI::meniu() {
 	int op;
 	while (true) {
@@ -102,6 +110,9 @@ void UI::meniu() {
 			this->handleUpdate();
 		}
 		else if (op == 5) {
+			this->handleMedie();
+		}
+		else if (op == 6) {
 			break;
 		}
 		else
